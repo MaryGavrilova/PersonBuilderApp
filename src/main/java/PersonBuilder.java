@@ -16,8 +16,12 @@ public class PersonBuilder {
     }
 
     public PersonBuilder setAge(int age) {
-        this.age = age;
-        return this;
+        if (age < 0) {
+            throw new IllegalArgumentException("Age can't be below zero");
+        } else {
+            this.age = age;
+            return this;
+        }
     }
 
     public PersonBuilder setAddress(String address) {
@@ -28,9 +32,6 @@ public class PersonBuilder {
     public Person build() {
         if (name == null || surname == null) {
             throw new IllegalStateException("Name or surname is unknown");
-        }
-        if (age < 0) {
-            throw new IllegalArgumentException("Age can't be below zero or equal to zero");
         }
         Person person = new Person(name, surname, age, address);
         return person;

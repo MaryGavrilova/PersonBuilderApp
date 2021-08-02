@@ -47,7 +47,7 @@ public class Person {
     }
 
     public boolean hasAge() {
-        if (age > 0) {
+        if (age >= 0) {
             return true;
         } else return false;
     }
@@ -79,9 +79,9 @@ public class Person {
         } else if (hasAge() == false && hasAddress() == true) {
             return name + " " + surname + ", адрес: " + address;
         } else if (hasAge() == true && hasAddress() == false) {
-            return name + " " + surname + ", возвраст: " + age;
+            return name + " " + surname + ", возраст: " + age;
         } else {
-            return name + " " + surname + ", возвраст: " + age + ", адрес: " + address;
+            return name + " " + surname + ", возраст: " + age + ", адрес: " + address;
         }
     }
 
@@ -99,9 +99,8 @@ public class Person {
     }
 
     public PersonBuilder newChildBuilder() {
-        PersonBuilder childBuilder = new PersonBuilder();
-        childBuilder.setSurname(surname);
-        childBuilder.setAddress(address);
-        return childBuilder;
+        return new PersonBuilder()
+                .setSurname(surname)
+                .setAddress(address);
     }
 }
