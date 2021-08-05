@@ -4,6 +4,9 @@ public class PersonBuilder {
     protected int age;
     protected String address;
 
+    public PersonBuilder() {
+        age = -1;
+    }
 
     public PersonBuilder setName(String name) {
         this.name = name;
@@ -36,5 +39,4 @@ public class PersonBuilder {
         Person person = new Person(name, surname, age, address);
         return person;
     }
-
 }
